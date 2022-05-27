@@ -9,7 +9,6 @@ import { ProductListType } from '../home/types';
 
 
 const ProductDetails = () => {
-  const [cart, setCart] = React.useState<ProductListType[]>([])
   const { list } = useParams()
   const dispatch = useDispatch()
   const mainList = useSelector((state: any) => state.list);
@@ -27,12 +26,17 @@ const ProductDetails = () => {
   })
 
   function handleAddToCart (data: ProductListType) {
-    setCart((cart: any) => cart.concat(data))
-    dispatch(addCartItems(cart))
+    dispatch(addCartItems(data))
   }
 
   if (mainList.loading) {
     return <Loading />;
+  } else if (!item) {
+    return (
+      <>
+        go to home
+      </>
+    )
   }
   
   return (

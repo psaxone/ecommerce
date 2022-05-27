@@ -9,7 +9,6 @@ import { ProductListType } from './types';
 import { ROUTES } from '../../constants';
 
 const Home = (props: any) => {
-  const [cart, setCart] = React.useState<ProductListType[]>([])
   const dispatch = useDispatch()
   const mainList = useSelector((state: any) => state.list);
 
@@ -26,8 +25,7 @@ const Home = (props: any) => {
   }
 
   function handleAddToCart (data: ProductListType) {
-    setCart((cart: any) => cart.concat(data))
-    dispatch(addCartItems(cart))
+    dispatch(addCartItems(data))
   }
 
 
@@ -37,7 +35,6 @@ const Home = (props: any) => {
       {mainList.data.map((lists: any) => (
         lists.map((list :ProductListType) => (
           <Box maxW='sm' borderWidth='1px' borderRadius='5' overflow='hidden' m='10' key={list.title}>
-            {/* <Link to={ROUTES.DETAILS} state={{ list: list}}> */}
             <Link to={{
                 pathname: `${ROUTES.DETAILS}/:${list.title}`,
                 list: true
