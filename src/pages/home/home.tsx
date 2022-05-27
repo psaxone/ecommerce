@@ -7,7 +7,6 @@ import { Loading } from '../../pages/common';
 import { Box, Button, Image, Flex } from '@chakra-ui/react';
 import { ProductListType } from './types';
 import { ROUTES } from '../../constants';
-import ProductDetails from '../product-details';
 
 const Home = (props: any) => {
   const [cart, setCart] = React.useState<ProductListType[]>([])
@@ -31,11 +30,6 @@ const Home = (props: any) => {
     dispatch(addCartItems(cart))
   }
 
-  // const handleItemClick = (data: ProductListType) => {
-  //   return (
-  //     <ProductDetails data={data}/>
-  //   )
-  // }
 
   return (
     <>
