@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import Header from './pages/common/header';
+import Cart from './pages/cart-details';
+import Checkout from './pages/checkout';
+import ProductDetails from './pages/product-details';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Home from './pages/home';
+import { ROUTES } from './constants';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Switch>
+        <Route 
+          path={ROUTES.CART}
+          component={Cart}
+        />
+        <Route 
+          path={ROUTES.CHECKOUT}
+          component={Checkout}
+        />
+        <Route 
+          path={`${ROUTES.DETAILS}/:list`}
+          component={ProductDetails}
+        />
+        <Route 
+          path={ROUTES.HOME}
+          component={Home}
+        />
+        <Redirect to={ROUTES.HOME}/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
