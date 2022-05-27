@@ -1,10 +1,11 @@
 import axios from "axios";
 
+// const API = process.env.REACT_APP_API_KEY
 const instance = axios.create({
-  baseURL: 'https://nike-products.p.rapidapi.com/',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
-    'X-RapidAPI-Host': 'nike-products.p.rapidapi.com',
-    'X-RapidAPI-Key': `${process.env.API_KEY}`
+    'X-RapidAPI-Host': `${process.env.REACT_APP_API_HOST}`,
+    'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`
   }
 });
 
